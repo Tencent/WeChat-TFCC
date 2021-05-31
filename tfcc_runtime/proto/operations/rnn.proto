@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package tfcc.runtime.operations.rnn;
+
+message BidirectionalLSTM
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 hidden_size = 1;
+}

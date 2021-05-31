@@ -1,0 +1,190 @@
+syntax = "proto3";
+import "tfcc_runtime/proto/common.proto";
+
+package tfcc.runtime.operations.base;
+
+message At
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message At1
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 idx = 1;
+}
+
+message Cast
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    tfcc.runtime.common.DataType data_type = 1;
+}
+
+message Concat
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+}
+
+message CreateTensor
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    tfcc.runtime.common.Value value = 1;
+    tfcc.runtime.common.DataType data_type = 2;
+}
+
+message CreateVector
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    message Value
+    {
+        oneof source
+        {
+            int64 int64_value = 1;
+            uint64 uint64_value = 2;
+            float float_value = 3;
+            double double_value = 4;
+            uint32 pos = 5;
+        }
+    }
+
+    repeated Value values = 1;
+    tfcc.runtime.common.DataType data_type = 2;
+}
+
+message Expand
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Flatten
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+}
+
+message GetDimension
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+    tfcc.runtime.common.DataType data_type = 2;
+}
+
+message GetShape
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Identity
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message If
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    string then_graph_name = 1;
+    uint32 then_graph_capture_count = 2;
+    string else_graph_name = 3;
+    uint32 else_graph_capture_count = 4;
+}
+
+message Loop
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    string sub_graph_name = 1;
+    uint32 carried_count = 2;
+    uint32 capture_count = 3;
+    uint32 scan_count = 4;
+}
+
+message Pad
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+}
+
+message Range
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Reshape
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message SliceV1
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+    uint32 length = 2;
+}
+
+message SliceV2
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+}
+
+message Split
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+}
+
+message Squeeze
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    repeated uint32 axes = 1;
+}
+
+message Stack
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+}
+
+message Tile
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message ToTensor
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message ToValue
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message ToVector
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Transpose
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    repeated uint32 perm = 1;
+}
+
+message Tril
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    int64 k = 1;
+}
+
+message Triu
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    int64 k = 1;
+}
+
+message Unsqueeze
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    repeated uint32 axes = 1;
+}

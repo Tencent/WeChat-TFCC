@@ -1,0 +1,13 @@
+build
+build_*
+.*
+data
+.vscode
+__pycache__
+*.pyc
+*.svg
+*.png
+!.gitignore
+test
+!/tfcc/test
+!/test

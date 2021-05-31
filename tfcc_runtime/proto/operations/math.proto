@@ -1,0 +1,172 @@
+syntax = "proto3";
+import "tfcc_runtime/proto/common.proto";
+
+package tfcc.runtime.operations.math;
+
+message Abs
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message ArgMax
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+}
+
+message Add
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Div
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Clip
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Erf
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Gelu
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message LeakyRelu
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    tfcc.runtime.common.Value alpha = 1;
+}
+
+message Log
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Matmul
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message MatmulWithBias
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Max
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Min
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Mul
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Neg
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Pow
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Reciprocal
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message ReduceMax
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    repeated uint32 axes = 1;
+}
+
+message ReduceMean
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    repeated uint32 axes = 1;
+}
+
+message ReduceMin
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    repeated uint32 axes = 1;
+}
+
+message ReduceProd
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    repeated uint32 axes = 1;
+}
+
+message ReduceSum
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    repeated uint32 axes = 1;
+}
+
+message Relu
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Rsqrt
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Sign
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Sigmoid
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Softmax
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+}
+
+message Softplus
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Sqrt
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Sub
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Tanh
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message TopK
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}

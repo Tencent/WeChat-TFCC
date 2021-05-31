@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package tfcc.runtime.common;
+
+enum DataType
+{
+    UNKNOW = 0;
+    FLOAT = 1;
+    UINT8 = 2;
+    INT8 = 3;
+    UINT16 = 4;
+    INT16 = 5;
+    INT32 = 6;
+    INT64 = 7;
+    BOOL = 9;
+    DOUBLE = 11;
+    UINT32 = 12;
+    UINT64 = 13;
+    COMPLEX64 = 14;
+}
+
+message Value
+{
+    oneof source
+    {
+        int64 int64_value = 1;
+        uint64 uint64_value = 2;
+        float float_value = 3;
+        double double_value = 4;
+    }
+}

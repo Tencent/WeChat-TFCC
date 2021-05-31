@@ -1,0 +1,55 @@
+syntax = "proto3";
+package tfcc.runtime.operations.fusion;
+
+enum OperationType
+{
+    // operations
+    ADD = 0;
+    SUB = 1;
+    MUL = 2;
+    DIV = 3;
+    ABS = 4;
+    MIN = 5;
+    MAX = 6;
+    NEG = 7;
+    SQRT =8;
+    RSQRT = 9;
+    RELU = 10;
+    TANH = 11;
+    LEAKYRELU = 12;
+    LOG = 13;
+    SIGMOID = 14;
+    SOFTPLUS = 15;
+    RECIPROCAL = 16;
+    CLIP = 17;
+
+    REPEATED = 1000000;
+
+    // params
+    PARAM_0 = 2000000;
+    PARAM_1 = 2000001;
+    PARAM_2 = 2000002;
+    PARAM_3 = 2000003;
+    PARAM_4 = 2000004;
+    PARAM_5 = 2000005;;
+    PARAM_6 = 2000006;
+    PARAM_7 = 2000007;
+    PARAM_8 = 2000008;
+    PARAM_9 = 2000009;
+    PARAM_10 = 2000010;
+    PARAM_11 = 2000011;
+}
+
+message FusionOpFixedShape
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    repeated OperationType op_types = 1;
+    repeated uint32 result_shape = 2;
+    repeated bool broadcast_marks = 3;
+}
+
+message FusionOpDynamicShape
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    repeated OperationType op_types = 1;
+}

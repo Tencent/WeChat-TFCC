@@ -1,0 +1,6 @@
+get_filename_component(_INSTALL_CMAKE_PATH "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+include("${_INSTALL_CMAKE_PATH}/@PROJECT_NAME@.cmake")
+set(TFCC_WITH_MKL @TFCC_WITH_MKL@)
+set(TFCC_WITH_CUDA @TFCC_WITH_CUDA@)
+find_package(OpenMP)

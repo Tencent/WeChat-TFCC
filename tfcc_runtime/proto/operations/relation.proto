@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package tfcc.runtime.operations.relation;
+
+message Equal
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Less
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message LessOrEqual
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Greater
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message GreaterOrEqual
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message Not
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message UnEqual
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}

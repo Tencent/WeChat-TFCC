@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package tfcc.runtime.operations.signal;
+
+message RFFT
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 length = 1;
+}
+
+message IRFFT
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 length = 1;
+}

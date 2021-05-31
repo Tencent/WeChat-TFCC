@@ -1,0 +1,92 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+import "tfcc_runtime/proto/common.proto";
+
+package tfcc.runtime.model;
+
+message Variable
+{
+}
+
+message View
+{
+}
+
+message ConstantTensor
+{
+    string ref = 1;
+}
+
+message Value
+{
+}
+
+message ConstantValue
+{
+    string ref = 1;
+}
+
+message Vector
+{
+}
+
+message ConstantVector
+{
+    string ref = 1;
+}
+
+message Shape
+{
+    message Dimension
+    {
+        oneof DimensionValue
+        {
+            uint32 value = 1;
+            string param = 2;
+        }
+    }
+    repeated Dimension dimensions = 1;
+}
+
+message Symbol
+{
+    string name = 1;
+    tfcc.runtime.common.DataType data_type = 2;
+    oneof symbol_type
+    {
+        Variable variable = 3;
+        View view = 4;
+        ConstantTensor constant_tensor = 5;
+        Value value = 6;
+        ConstantValue constant_value = 7;
+        Vector vector = 8;
+        ConstantVector constant_vector = 9;
+    }
+    Shape shape = 10;
+}
+
+message Node
+{
+    string name = 1;
+    repeated string inputs = 2;
+    repeated string outputs = 3;
+    google.protobuf.Any operation = 4;
+    uint32 version = 5;
+}
+
+message Graph
+{
+    string name = 1;
+    repeated string inputs = 2;
+    repeated string outputs = 3;
+    repeated Symbol symbols = 4;
+    repeated Node nodes = 5;
+}
+
+message Model
+{
+    uint64 proto_version = 1;
+    string name = 2;
+    repeated Graph graphs = 3;
+    string entrance_graph_name = 4;
+}

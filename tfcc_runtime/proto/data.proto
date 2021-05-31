@@ -1,0 +1,18 @@
+syntax = "proto3";
+import "tfcc_runtime/proto/common.proto";
+package tfcc.runtime.data;
+
+message DataItem {
+    string name = 1;
+    tfcc.runtime.common.DataType dtype = 2;
+    repeated uint32 shape = 3;
+    bytes data = 4;
+}
+
+message Inputs {
+    repeated DataItem items = 1;
+}
+
+message Outputs {
+    repeated DataItem items = 2;
+}

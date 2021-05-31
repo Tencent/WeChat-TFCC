@@ -1,0 +1,105 @@
+syntax = "proto3";
+import "tfcc_runtime/proto/common.proto";
+
+package tfcc.runtime.operations.nn;
+
+message AveragePool1D
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 kernel = 1;
+    uint32 padding = 2;
+    uint32 stride = 3;
+}
+
+message AveragePool2D
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 kernel_height = 1;
+    uint32 kernel_width = 2;
+    uint32 padding_height = 3;
+    uint32 padding_width = 4;
+    uint32 stride_height = 5;
+    uint32 stride_width = 6;
+}
+
+message BatchNormalization
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; VERSION_2 = 2; }
+    tfcc.runtime.common.Value epsilon = 1;
+    uint32 axis = 2;
+}
+
+message Conv2D
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; VERSION_2 = 2; VERSION_3 = 3; VERSION_4 = 4; }
+    uint32 padding_height = 1;
+    uint32 padding_width = 2;
+    uint32 stride_height = 3;
+    uint32 stride_width = 4;
+    uint32 dilate_height = 5;
+    uint32 dilate_width = 6;
+    bool nchw = 7;
+    uint32 group = 8;
+}
+
+message Gather
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 axis = 1;
+}
+
+message GlobalAveragePool2D
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message LayerNormalization
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    tfcc.runtime.common.Value epsilon = 1;
+}
+
+message MaxPool1D
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; VERSION_2 = 2; }
+    uint32 kernel = 1;
+    uint32 padding = 2;
+    uint32 stride = 3;
+    bool ncw = 4;
+}
+
+message MaxPool2D
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; VERSION_2 = 2; }
+    uint32 kernel_height = 1;
+    uint32 kernel_width = 2;
+    uint32 padding_height = 3;
+    uint32 padding_width = 4;
+    uint32 stride_height = 5;
+    uint32 stride_width = 6;
+    bool nchw = 7;
+}
+
+message NonZero
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message OneHot
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    uint32 depth = 1;
+    tfcc.runtime.common.Value off_value = 2;
+    tfcc.runtime.common.Value on_value = 3;
+    tfcc.runtime.common.DataType data_type = 4;
+}
+
+message Where
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}
+
+message ScatterNDWithData
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+}

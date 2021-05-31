@@ -1,0 +1,56 @@
+cmake_minimum_required(VERSION 3.14)
+project(tfcc)
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+include(Utils)
+
+option(TFCC_WITH_MKL "Build tfcc_mkl" ON)
+option(TFCC_WITH_CUDA "Build tfcc_mkl" ON)
+option(TFCC_OPEN_COVERAGE "Build with coverage flags" OFF)
+option(TFCC_WITH_TEST "Build tfcc tests" ON)
+set(TFCC_EXTRA_CXX_FLAGS CACHE STRING "C++ extra build flags")
+set(TFCC_EXTRA_CUDA_FLAGS CACHE STRING "CUDA extra build flags")
+
+# set c++ 11
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+set(CMAKE_CUDA_STANDARD 11)
+set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+set(CMAKE_CUDA_EXTENSIONS OFF)
+
+if (${TFCC_OPEN_COVERAGE})
+    include(CodeCoverage)
+    append_coverage_compiler_flags()
+endif()
+
+if (NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build : None Debug Release RelWithDebInfo MinSizeRel Coverage." FORCE)
+endif (NOT CMAKE_BUILD_TYPE)
+message("* Current build type is : ${CMAKE_BUILD_TYPE}")
+
+if (MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /WX")
+    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --compiler-options=/W4 --compiler-options=/WX")
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
+    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --compiler-options=-Wall --compiler-options=-Werror")
+endif()
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TFCC_EXTRA_CXX_FLAGS}")
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} ${TFCC_EXTRA_CUDA_FLAGS}")
+
+add_subdirectory(core)
+if (${TFCC_WITH_MKL})
+    add_subdirectory(mkl)
+endif()
+if (${TFCC_WITH_CUDA})
+    add_subdirectory(cuda)
+endif()
+
+if (${TFCC_WITH_TEST})
+    add_subdirectory(test)
+endif()
+
+install(EXPORT ${PROJECT_NAME} DESTINATION cmake)
+configure_file(cmake/tfcc-config.cmake.in ${PROJECT_BINARY_DIR}/tfcc-config.cmake @ONLY)
+install(FILES ${PROJECT_BINARY_DIR}/tfcc-config.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/cmake)

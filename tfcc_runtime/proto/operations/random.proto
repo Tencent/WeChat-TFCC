@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "tfcc_runtime/proto/common.proto";
+
+package tfcc.runtime.operations.random;
+
+message NormalLike
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    tfcc.runtime.common.Value mean = 1;
+    tfcc.runtime.common.Value scale = 2;
+    tfcc.runtime.common.DataType data_type = 3;
+}
+
+message UniformLike
+{
+    enum VERSION { _ = 0; VERSION_1 = 1; }
+    tfcc.runtime.common.Value low = 1;
+    tfcc.runtime.common.Value high = 2;
+    tfcc.runtime.common.DataType data_type = 3;
+}
