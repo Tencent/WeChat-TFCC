@@ -4,7 +4,7 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(Utils)
 
 option(TFCC_WITH_MKL "Build tfcc_mkl" ON)
-option(TFCC_WITH_CUDA "Build tfcc_mkl" ON)
+option(TFCC_WITH_CUDA "Build tfcc_cuda" ON)
 option(TFCC_OPEN_COVERAGE "Build with coverage flags" OFF)
 option(TFCC_WITH_TEST "Build tfcc tests" ON)
 set(TFCC_EXTRA_CXX_FLAGS CACHE STRING "C++ extra build flags")
