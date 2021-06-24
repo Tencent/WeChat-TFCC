@@ -6,6 +6,9 @@ ROOT_PATH=`pwd`
 mkdir -p .tmp
 
 # download oneDNN
+if [ ! -d $INSTALL_PREFIX_PATH ]; then
+    mkdir -p $INSTALL_PREFIX_PATH
+fi
 cd $INSTALL_PREFIX_PATH
 mkdir -p oneDNN
 cd oneDNN
